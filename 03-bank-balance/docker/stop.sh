@@ -5,6 +5,6 @@ REGULAR='\033[0m'
 
 echo -e "${YELLOW}Stoping the Kafka + ZooKeeper docker container...${REGULAR}"
 
-KAFKA_IMAGE="docker_kafka_dev"
+KAFKA_CONTAINER="docker_kafka_dev"
 
-docker stop $KAFKA_IMAGE
+docker stop $KAFKA_CONTAINER
