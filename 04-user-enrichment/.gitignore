@@ -1,0 +1,44 @@
+### Directories ###
+.gradle/
+/bin/
+/build/
+/doc/
+/gradle/
+/repos/
+/target/
+
+### Files ###
+gradlew.bat
+gradlew
+*.class
+*.jar
+*.war
+*.ear
+*.db
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea*
+*.iws
+*.iml
+*.ipr
+/out/
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### OS Files ###
+.DS_Store
+Thumbs.db
