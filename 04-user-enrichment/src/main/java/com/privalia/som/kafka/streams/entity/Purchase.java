@@ -1,6 +1,9 @@
 package com.privalia.som.kafka.streams.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
 
 /**
  * Entity purchase
@@ -18,6 +21,12 @@ public class Purchase {
     private String userEmail;
     private String productName;
     private String productDescription;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSS")
+    private Date createdAt;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'hh:mm:ss.SSS")
+    private Date updatedAt;
 
     @JsonIgnore
     private boolean error;
@@ -39,6 +48,8 @@ public class Purchase {
         this.userEmail = "";
         this.productName = "";
         this.productDescription = "";
+        this.createdAt = new Date();
+        this.updatedAt = this.createdAt;
         this.error = false;
     }
 
@@ -61,6 +72,8 @@ public class Purchase {
         this.userEmail = "";
         this.productName = "";
         this.productDescription = "";
+        this.createdAt = new Date();
+        this.updatedAt = this.createdAt;
         this.error = false;
     }
 
@@ -75,6 +88,7 @@ public class Purchase {
         this.userFirstName = user.getFirstName();
         this.userLastName = user.getLastName();
         this.userEmail = user.getEmail();
+        this.updatedAt = new Date();
         return this;
     }
 
@@ -88,6 +102,7 @@ public class Purchase {
         this.productId = product.getId();
         this.productName = product.getName();
         this.productDescription = product.getDescription();
+        this.updatedAt = new Date();
         return this;
     }
 
@@ -179,6 +194,14 @@ public class Purchase {
     public Purchase setProductDescription(String productDescription) {
         this.productDescription = productDescription;
         return this;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
     public boolean isError() {
