@@ -10,14 +10,14 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.LongSerializer;
 
 /**
- * Kafka Producer application - produces many random transactions to the Kafka input topic
+ * Kafka producer example application - produces the example data to the input topics
  *
  * @author david.amigo
  */
 public class KafkaProducerExampleApp {
 
     /**
-     * Entry point of the ProducerApp
+     * Entry point of the KafkaProducerExampleApp
      *
      * @param args the program arguments
      */

@@ -204,6 +204,9 @@ public class Purchase {
         return updatedAt;
     }
 
+    public long getEllapsed() {
+        return this.updatedAt.getTime() - this.createdAt.getTime();
+    }
     public boolean isError() {
         return error;
     }
@@ -211,5 +214,17 @@ public class Purchase {
     public Purchase setError(boolean error) {
         this.error = error;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "[#" + this.id
+                + ", #" + this.userId
+                + " (" + this.userFirstName +
+                " " + this.userLastName
+                + "), #" + this.productId
+                + "(" + this.productName
+                + "), " + this.getEllapsed()
+                + "]";
     }
 }

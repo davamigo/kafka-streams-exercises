@@ -65,4 +65,11 @@ public class Product {
         this.cost = cost;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "[#" + this.id
+                + ", " + this.name
+                + "]";
+    }
 }

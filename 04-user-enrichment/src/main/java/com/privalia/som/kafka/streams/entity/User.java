@@ -72,4 +72,12 @@ public class User {
         this.email = email;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "[#" + this.id
+                + ", " + this.firstName
+                + " " + this.lastName
+                + "]";
+    }
 }

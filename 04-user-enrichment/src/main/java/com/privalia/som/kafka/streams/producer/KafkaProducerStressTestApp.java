@@ -12,29 +12,29 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import java.util.Random;
 
 /**
- * Kafka Producer application - produces many random transactions to the Kafka input topic
+ * Kafka producer stress test application - produces random data to the input topics to make a stress test
  *
  * @author david.amigo
  */
 public class KafkaProducerStressTestApp {
 
+    private static final long MAX_USERS = 1000000;
+
+    private static final long MAX_PRODUCTS = 5000000;
+
     /**
-     * Entry point of the ProducerApp
+     * Entry point of the KafkaProducerStressTestApp
      *
      * @param args the program arguments
      */
     public static void main(String[] args) {
 
-//        produceUsersTable();
-//
-//        produceProductsTable();
+        produceUsersTable();
+
+        produceProductsTable();
 
         producePurchasesStream();
     }
-
-    private static final long MAX_USERS = 1000000;
-
-    private static final long MAX_PRODUCTS = 5000000;
 
     /**
      * Creates the GlobalKTable of users by publishing the users in a Kafka topic
@@ -49,7 +49,7 @@ public class KafkaProducerStressTestApp {
         );
 
         // Produce 1,000,000 random users
-        for (long i = 0; i < MAX_USERS; i++) {
+        for (long i = 1; i <= MAX_USERS; i++) {
             producer.send(createUserRecord(new User(
                     "First#" + i,
                     "Last#" + i,
@@ -74,7 +74,7 @@ public class KafkaProducerStressTestApp {
         );
 
         // Produce 5,000,000 random PRODUCTS
-        for (long i = 0; i < MAX_PRODUCTS; i++) {
+        for (long i = 1; i <= MAX_PRODUCTS; i++) {
             producer.send(createProductRecord(new Product(
                     "Name#" + i,
                     "Description#" + i,

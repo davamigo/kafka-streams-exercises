@@ -14,7 +14,7 @@ import java.util.Properties;
 public class KafkaStreamsConfig {
 
     public final static String BOOTSTRAP_SERVERS = "localhost:9092";
-    private final static String APPLICATION_ID = "user-enrichment-app";
+    public final static String APPLICATION_ID = "user-enrichment-app";
     private final static String AUTO_OFFSET_RESET = "earliest";
     private final static String CACHE_DISABLED = "0";
 
