@@ -204,6 +204,7 @@ public class Purchase {
         return updatedAt;
     }
 
+    @JsonIgnore
     public long getEllapsed() {
         return this.updatedAt.getTime() - this.createdAt.getTime();
     }

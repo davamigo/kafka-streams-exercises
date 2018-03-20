@@ -46,6 +46,9 @@ public class KafkaProducerConfig {
         // Leverage idempotent producer (Kafka 0.11) - Ensure don't push duplicates
         config.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, KafkaProducerConfig.ENABLE_IDEMPOTENCE_VALUE);
 
+        // Add compression to the producer
+        config.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "lz4");
+
         return config;
     }
 }

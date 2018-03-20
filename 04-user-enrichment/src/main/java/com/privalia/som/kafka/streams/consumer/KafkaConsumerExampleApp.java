@@ -43,15 +43,15 @@ public class KafkaConsumerExampleApp {
 //                KafkaConsumerConfig.PURCHASES_INPUT_TOPIC
 //        );
 
-//        consumeTopic(
-//                new Consumer<Long, Purchase>(new LongDeserializer(), new CustomDeserializer.ForPurchase()),
-//                KafkaConsumerConfig.PURCHASES_OUTPUT_TOPIC
-//        );
-
         consumeTopic(
                 new Consumer<Long, Purchase>(new LongDeserializer(), new CustomDeserializer.ForPurchase()),
-                KafkaConsumerConfig.PURCHASES_ERROR_TOPIC
+                KafkaConsumerConfig.PURCHASES_OUTPUT_TOPIC
         );
+
+//        consumeTopic(
+//                new Consumer<Long, Purchase>(new LongDeserializer(), new CustomDeserializer.ForPurchase()),
+//                KafkaConsumerConfig.PURCHASES_ERROR_TOPIC
+//        );
     }
 
     private static void consumeTopic(Consumer consumer, String topic) {
