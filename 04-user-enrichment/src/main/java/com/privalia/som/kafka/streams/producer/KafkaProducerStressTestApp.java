@@ -29,9 +29,9 @@ public class KafkaProducerStressTestApp {
      */
     public static void main(String[] args) {
 
-        produceUsersTable();
+//        produceUsersTable();
 
-        produceProductsTable();
+//        produceProductsTable();
 
         producePurchasesStream();
     }
@@ -105,11 +105,11 @@ public class KafkaProducerStressTestApp {
             long quantity = Math.round(Math.random() * 10);
             double price = ((double) Math.round(Math.random() * 100000)) / 100;
             producer.send(createPurchaseRecord(new Purchase(userId, productId, quantity, price)));
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException exc) {
-                exc.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(1);
+//            } catch (InterruptedException exc) {
+//                exc.printStackTrace();
+//            }
         }
     }
 
