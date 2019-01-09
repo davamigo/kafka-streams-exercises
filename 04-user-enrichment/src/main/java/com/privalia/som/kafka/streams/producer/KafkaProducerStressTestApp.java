@@ -22,6 +22,8 @@ public class KafkaProducerStressTestApp {
 
     private static final long MAX_PRODUCTS = 5000000;
 
+    private static final long MAX_PURCHASES = 250000;
+
     /**
      * Entry point of the KafkaProducerStressTestApp
      *
@@ -98,19 +100,33 @@ public class KafkaProducerStressTestApp {
                 new CustomSerializer.ForPurchase()
         );
 
-        // Produce infinite random purchases
-        while (true) {
-            long userId = Math.round(Math.random() * MAX_USERS);
-            long productId = Math.round(Math.random() * MAX_PRODUCTS);
-            long quantity = Math.round(Math.random() * 10);
+        // Produce 250K random purchases
+        for (long i = 1; i <= MAX_PURCHASES; i++) {
+
+            long userId = 1 + Math.round(Math.random() * (MAX_USERS - 1));
+            long productId = 1 + Math.round(Math.random() * (MAX_PRODUCTS - 1));
+            long quantity = 1 + Math.round(Math.random() * 10);
             double price = ((double) Math.round(Math.random() * 100000)) / 100;
-            producer.send(createPurchaseRecord(new Purchase(userId, productId, quantity, price)));
+
+            // Insert rando error
+            if (Math.random() > 0.999) {
+                userId = 0;
+                productId = 0;
+            }
+
+            Purchase purchase = new Purchase(userId, productId, quantity, price);
+            ProducerRecord<Long, Purchase> record = createPurchaseRecord(purchase);
+            producer.send(record);
+
 //            try {
 //                Thread.sleep(1);
 //            } catch (InterruptedException exc) {
 //                exc.printStackTrace();
 //            }
         }
+
+        // Close the connection with Kafka
+        producer.close();
     }
 
     /**
